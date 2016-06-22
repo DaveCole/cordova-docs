@@ -38,9 +38,7 @@ then obtain the `config.xml` file from within the named application's
 subdirectory within `platforms/ios`.
 
 To follow these instructions, make sure you have the latest Cordova
-distribution. Download it from
-[cordova.apache.org](http://cordova.apache.org) and unzip its iOS
-package.
+distribution. Follow the instructions to install Cordova and create a bare-bones iOS platform CLI project [here](http://cordova.apache.org/docs/en/latest/guide/cli/).  The folder you need will be the `CordovaLib` folder within `<projectName>/platforms/ios/`.
 
 ## Adding Cleaver to the Xcode Project (CordovaLib Sub-Project)
 
@@ -58,8 +56,8 @@ package.
 1. Choose __Create groups for any added folders__ and press
    __Finish__.
 
-1. Use the Finder to copy the `CordovaLib/CordovaLib.xcodeproj` file
-   into Xcode's __Project Navigator__
+1. Use the Finder to copy the entire `CordovaLib` folder containing `CordovaLib.xcodeproj`
+   into Xcode's __Project Navigator__ from the `platforms/ios/` folder in the bare-bones project you created with the CLI.
 
 1. Select `CordovaLib.xcodeproj` within the __Project Navigator__.
 
@@ -72,7 +70,7 @@ package.
 1. Select the __project icon__ in the __Project Navigator__, select
    the __Target__, then select the __Build Settings__ tab.
 
-1. Add `-force_load` and `-Obj-C` for the __Other Linker Flags__ value.
+1. Add `-force_load` *immediately followed by* `$(BUILT_PRODUCTS_DIR)/libCordova.a` for the __Other Linker Flags__ value.  Order is important here.
 
 1. Click on the __project icon__ in the Project Navigator, select the
    __Target__, then select the __Build Phases__ tab.
